@@ -18,4 +18,8 @@ Vagrant.configure("2") do |config|
 
     #NETWORK SETTINGS
     config.vm.network :public_network
+
+    #PORTFORWARD
+    config.vm.network :forwarded_port, guest: 80, host: 8000
+    config.vm.network :forwarded_port, guest: 22, host: 2200, id: "ssh"
 end
