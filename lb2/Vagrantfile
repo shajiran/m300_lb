@@ -15,4 +15,7 @@ Vagrant.configure("2") do |config|
         vb.cpus = 2
         vb.gui = true
     end 
+
+    #NETWORK SETTINGS
+    config.vm.network :public_network
 end
