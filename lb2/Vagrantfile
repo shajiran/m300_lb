@@ -24,7 +24,7 @@ Vagrant.configure("2") do |config|
     config.vm.network :forwarded_port, guest: 22, host: 2200, id: "ssh"
 
     #SAMBA INSTALLATION
-    SCRIPT_INSTALL = <<-SCRIPT
+    SCRIPT_INSTALL1 = <<-SCRIPT
         set -e
         
         apt-get -y update
@@ -35,9 +35,33 @@ Vagrant.configure("2") do |config|
         sudo rm /etc/samba/smb.conf
     SCRIPT
 
-    config.vm.provision :shell, inline: SCRIPT_INSTALL
+    config.vm.provision :shell, inline: SCRIPT_INSTALL1
 
     config.vm.provision "file", 
         source: "https://raw.githubusercontent.com/shajiran/m300_lb/main/lb2/smb.conf", 
         destination: "/tmp/smb.conf"
+    
+    SCRIPT_INSTALL2 = <<-SCRIPT
+        set -e
+    
+        sudo mv /tmp/smb.conf /etc/samba/smb.conf
+        LOGIN=test
+        sudo mkdir /home/$LOGIN
+
+        sudo adduser $LOGIN
+        sudo groupadd $LOGIN
+        sudo addgroup $LOGIN $LOGIN
+
+        PASS=mypassword
+        echo $PASS | sudo smbpasswd --stdin $LOGIN
+        
+        sudo chown $LOGIN:$LOGIN /home/$LOGIN
+        sudo chmod 2770 /home/$LOGIN
+
+        sudo /etc/init.d/samba restart
+
+    SCRIPT
+
+    config.vm.provision :shell, inline: SCRIPT_INSTALL2 
+
 end
