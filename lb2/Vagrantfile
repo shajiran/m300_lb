@@ -37,14 +37,15 @@ Vagrant.configure("2") do |config|
         sudo wget -o /etc/samba/smb.conf https://raw.githubusercontent.com/shajiran/m300_lb/main/lb2/smb.conf 
     
         LOGIN=test
+        PASS=mypassword
+        
         sudo mkdir /home/$LOGIN
 
-        sudo adduser $LOGIN
+        echo -ne "$PASS\n$PASS\n" | sudo adduser $LOGIN
         sudo groupadd $LOGIN
         sudo addgroup $LOGIN $LOGIN
 
-        PASS=mypassword
-        echo $PASS | sudo smbpasswd --stdin $LOGIN
+        echo -ne "$PASS\n$PASS\n" | sudo smbpasswd -a -s $LOGIN
         
         sudo chown $LOGIN:$LOGIN /home/$LOGIN
         sudo chmod 2770 /home/$LOGIN
