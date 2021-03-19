@@ -143,6 +143,7 @@ X
 
 <a name="quellenangaben"></a>
 ## 4 - Quellenverzeichnis
+- [VagrantBox Katalog](https://app.vagrantup.com/boxes/search)
 - [Provisioning](https://semaphoreci.com/community/tutorials/getting-started-with-vagrant)
 - [Samba Installation und Konfiguration](https://www.thomas-krenn.com/de/wiki/Einfache_Samba_Freigabe_unter_Debian)
 - [Samba Konfigurations File anpassen](https://wiki.ubuntuusers.de/Samba_Server/smb.conf/)
