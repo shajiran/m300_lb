@@ -31,7 +31,7 @@ Bevor wir dem Code zuwenden, benötigen wir folgende Tools:
 - GitBash
 <a name="code"></a>
 ### 2.2 - Code
-Den ganzen Code findet man im Repository.
+Den [ganzen Code](https://github.com/shajiran/m300_lb/blob/main/lb2/Vagrantfile) findet man im Repository.
 #### Vagrant Konfiguration
 X
 ```
@@ -133,7 +133,6 @@ X
 ```
 X
 ```
-
         sudo /etc/init.d/samba restart
 ```
 
@@ -144,3 +143,8 @@ X
 
 <a name="quellenangaben"></a>
 ## 4 - Quellenverzeichnis
+- [Provisioning](https://semaphoreci.com/community/tutorials/getting-started-with-vagrant)
+- [Samba Installation und Konfiguration](https://www.thomas-krenn.com/de/wiki/Einfache_Samba_Freigabe_unter_Debian)
+- [Samba Konfigurations File anpassen](https://wiki.ubuntuusers.de/Samba_Server/smb.conf/)
+- [Samba Konfigurations File verschieben](https://stackoverflow.com/questions/54067192/vagrant-config-vm-provision-does-not-allow-me-to-copy-a-file-to-etc-nginx-conf/54099162)
+- [Samba Freigabe mit Authentifizierung](https://www.thomas-krenn.com/de/wiki/Samba_Freigabe_mit_Authentifizierung)
