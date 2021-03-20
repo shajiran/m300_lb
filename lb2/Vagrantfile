@@ -5,8 +5,9 @@
 #Created on:    13.03.2021
 #########################################
 
-#VIRTUAL MACHINE SETTINGS
+
 Vagrant.configure("2") do |config|
+    #VIRTUAL MACHINE SETTINGS
     config.vm.box = "ubuntu/trusty64"
 
     config.vm.provider "virtualbox" do |vb|
@@ -17,13 +18,13 @@ Vagrant.configure("2") do |config|
     end 
 
     #NETWORK SETTINGS
-    config.vm.network "public_network"
+    config.vm.network "public_network", ip: "192.168.1.200"
 
     #PORTFORWARD
     config.vm.network :forwarded_port, guest: 80, host: 8000
     config.vm.network :forwarded_port, guest: 22, host: 2200, id: "ssh"
 
-    #SAMBA INSTALLATION
+    #PROVINIONING / SAMBA INSTALLATION
     SCRIPT_INSTALL = <<-SCRIPT
         set -e
         
