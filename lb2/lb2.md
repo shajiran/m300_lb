@@ -62,7 +62,7 @@ X
 #### Netzwerk Konfiguration
 X
 ```
-    config.vm.network :public_network
+     config.vm.network "public_network", ip: "192.168.1.200"
 ```
 X
 ```
@@ -97,14 +97,9 @@ X
 ```
 X
 ```
-  config.vm.provision "file", 
-        source: "https://raw.githubusercontent.com/shajiran/m300_lb/main/lb2/smb.conf", 
-        destination: "/tmp/smb.conf"
+        sudo wget -P /etc/samba/ https://raw.githubusercontent.com/shajiran/m300_lb/main/lb2/smb.conf 
 ```
-X
-```
-        sudo mv /tmp/smb.conf /etc/samba/smb.conf
-```
+
 
 #### User einrichten
 X
@@ -118,13 +113,12 @@ X
 ```
 X
 ```
-        sudo adduser $LOGIN
-        sudo groupadd $LOGIN
+        echo -ne "$PASS\n$PASS\n" | sudo adduser $LOGIN
         sudo addgroup $LOGIN $LOGIN
 ```
 X
 ```
-        echo $PASS | sudo smbpasswd --stdin $LOGIN
+        echo -ne "$PASS\n$PASS\n" | sudo smbpasswd -a -s $LOGIN
 ```
 X
 ```
