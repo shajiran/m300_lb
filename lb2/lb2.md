@@ -33,7 +33,7 @@ Bevor wir dem Code zuwenden, benötigen wir folgende Tools:
 ### 2.2 - Code
 Den [ganzen Code](https://github.com/shajiran/m300_lb/blob/main/lb2/Vagrantfile) findet man im Repository. Wir werden hier die einzelnen Schritte genauer anschauen.
 #### Vagrant Konfiguration
-Die "2" in der ersten Zeile steht für die Version des Konfigurationsobjekts config, das zur Konfiguration für diesen Block verwendet wird (der Abschnitt zwischen dem **do** und dem **end**). Dieses Objekt kann von Version zu Version sehr unterschiedlich sein. Derzeit gibt es nur zwei unterstützte Versionen: "1" und "2", wobei die "2" die neuere Version ist. Dies enthält neue und weitere Konfigurationsmöglichkeiten als die Vesion "1".
+Die "2" in der ersten Zeile steht für die Version des Konfigurationsobjekts **config**, das zur Konfiguration für diesen Block verwendet wird (der Abschnitt zwischen dem **do** und dem **end**). Dieses Objekt kann von Version zu Version sehr unterschiedlich sein. Derzeit gibt es nur zwei unterstützte Versionen: "1" und "2", wobei die "2" die neuere Version ist. Dies enthält neue und weitere Konfigurationsmöglichkeiten als die Vesion "1".
 ```
 Vagrant.configure("2") do |config|
     ...
@@ -43,7 +43,7 @@ end
 ```
 
 #### VM Konfiguration
-Für das Projekt verwenden wir eine Ubuntu Maschnine und holen dazu die entsprechende Image, welche für die VM verwendet soll.
+Die Einstellungen in **config.vm** ändern die Konfiguration der Maschine, die Vagrant verwaltet. Hier wird konfiguriert, welche Maschine hochfahren sollte. Für unser Projekt verwenden wir eine Ubuntu Maschnine (**ubuntu/trusty64**) und holen dazu die entsprechende [Image](https://app.vagrantup.com/boxes/search). Dieses Image ist bereits mit einem vorgegebenen Benutzer ausgestattet *(Username: **vagrant** / Password: **vagrant**)*.
 ```
     config.vm.box = "ubuntu/trusty64"
 ```
