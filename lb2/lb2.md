@@ -17,7 +17,7 @@
 
 <a name="einleitung"></a>
 ## 1 - Einleitung
-In diesem Projekt befassen wir uns mit **Infrastructure as Code (IaC)** an. Auf Basis von **VirtualBox / Vagrant** wollen wir nun einen Fileserver automatisieren.
+In diesem Projekt befassen wir uns mit **Infrastructure as Code (IaC)** an. Auf Basis von **VirtualBox / Vagrant** wollen wir nun einen Fileserver mittels Samba automatisch aufsetzen.
 
 
 <a name="umsetzung"></a>
