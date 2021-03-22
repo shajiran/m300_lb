@@ -31,7 +31,7 @@ Bevor wir dem Code zuwenden, benötigen wir folgende Tools:
 - GitBash
 <a name="code"></a>
 ### 2.2 - Code
-Den [ganzen Code](https://github.com/shajiran/m300_lb/blob/main/lb2/Vagrantfile) findet man im Repository. Wir werden hier die einzelnen Schritte genauer anschauen.
+Den [ganzen Code](https://github.com/shajiran/m300_lb/blob/main/lb2/Vagrantfile) findet man im Repository. Wir werden hier nun die einzelnen Schritte genauer anschauen.
 #### Vagrant Konfiguration
 Die "2" in der ersten Zeile steht für die Version des Konfigurationsobjekts **config**, das zur Konfiguration für diesen Block verwendet wird (der Abschnitt zwischen dem **do** und dem **end**). Dieses Objekt kann von Version zu Version sehr unterschiedlich sein. Derzeit gibt es nur zwei unterstützte Versionen: "1" und "2", wobei die "2" die neuere Version ist. Dies enthält neue und weitere Konfigurationsmöglichkeiten als die Vesion "1".
 ```
@@ -47,7 +47,7 @@ Die Einstellungen in **config.vm** ändern die Konfiguration der Maschine, die V
 ```
     config.vm.box = "ubuntu/trusty64"
 ```
-X  
+Für die Virtualisierung bestimmen wir hier, welchen Provider / Virtualisierungsanwendungen wir benutzen wollen. In diesem Projekt richten wir eine einfache VM (Virtuelle Maschine) mit VirtualBox ein. Mittels dem Befehle im GIT Bash z.B. `vagrant up` können wir die Maschine starten und mittels `vagrant destroy` stoppt es die Maschine und löscht alle Daten.
 ```
     config.vm.provider "virtualbox" do |vb|
 ```
