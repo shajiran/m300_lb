@@ -51,7 +51,7 @@ Für die Virtualisierung bestimmen wir hier, welchen Provider / Virtualisierungs
 ```
     config.vm.provider "virtualbox" do |vb|
 ```
-X
+Man kann nun auch noch die Virtuelle Maschnine anpassen. Man kann z.B. einen Namen für die Maschine bestimmen, Memory Speicher und Anzahl CPUs vergeben, etc. Die GUI funktion ist nicht notwendig. Dient dazu, dass nachdem man ein `vagrant up` gestartet hat, direkt in die Maschine gelangt. Wir setzen diese Funktion auf **true** für spätige Testzwecken, kann aber in unserem Fall auch auf **false** gesetzt sein.
 ```
         vb.name = "Fileserver (Samba)"
         vb.memory = "2048"
