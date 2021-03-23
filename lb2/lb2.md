@@ -51,7 +51,7 @@ Für die Virtualisierung bestimmen wir hier, welchen Provider / Virtualisierungs
 ```
     config.vm.provider "virtualbox" do |vb|
 ```
-Man kann nun auch noch die Virtuelle Maschnine anpassen. Man kann z.B. einen Namen für die Maschine bestimmen, Memory Speicher und Anzahl CPUs vergeben, etc. Die GUI funktion ist nicht notwendig. Dient dazu, dass nachdem man ein `vagrant up` gestartet hat, direkt in die Maschine gelangt. Wir setzen diese Funktion auf **true** für spätige Testzwecken, kann aber in unserem Fall auch auf **false** gesetzt sein.
+Man kann nun auch noch die Virtuelle Maschnine anpassen. Man kann z.B. einen Namen für die Maschine bestimmen, Memory Speicher und Anzahl CPUs vergeben, etc. Die GUI funktion ist nicht notwendig. Dient dazu, dass nachdem man ein `vagrant up` gestartet hat, direkt in die Maschine gelangt. Wir setzen diese Funktion auf `true` für spätige Testzwecken, kann aber in unserem Fall auch auf `false` gesetzt sein.
 ```
         vb.name = "Fileserver (Samba)"
         vb.memory = "2048"
@@ -64,7 +64,7 @@ Für unser Fileserver benötigen wir Internetzugang, um die Verbindung auch von 
 ```
      config.vm.network "public_network", ip: "192.168.1.200"
 ```
-X
+Wir könnten noch ein **Port-Forwarding** machen, wäre aber nicht nötig für unser Fileserver. Hätten wir noch einen einfachen Webserver, hätten wir unter http://localhost:8080 erreichbar diesen Webserver erreichen. Davor müsste man aber noch `apache2` installieren.
 ```
     config.vm.network :forwarded_port, guest: 80, host: 8000
     config.vm.network :forwarded_port, guest: 22, host: 2200, id: "ssh"
