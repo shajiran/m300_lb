@@ -60,7 +60,7 @@ Man kann nun auch noch die Virtuelle Maschnine anpassen. Man kann z.B. einen Nam
 ```
 
 #### Netzwerk Konfiguration
-X
+Für unser Fileserver benötigen wir Internetzugang, um die Verbindung auch von aussen zu ermöglichen. Hier konfigurieren wir das Netzwerk auf der Maschine. Wir unterscheiden zwischen zwei Netzwerke `private` und `public`. Die Idee dahinter ist, dass private Netzwerke niemals der Öffentlichkeit Zugang zu Ihrem Rechner gewähren sollten, public Netzwerke aber schon. Wir können zugleich auch eine statische IP-Adresse vergeben, mit der wir dann vom lokalen Rechner auf dem Fileserver zugreifen können.
 ```
      config.vm.network "public_network", ip: "192.168.1.200"
 ```
