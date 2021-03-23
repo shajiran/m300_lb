@@ -65,7 +65,7 @@ Für unser Fileserver benötigen wir Internetzugang, um die Verbindung auch von 
      config.vm.network "public_network", ip: "192.168.1.200"
 ```
 Wir könnten noch ein **Port-Forwarding** machen, wäre aber nicht nötig für unser Fileserver. Hätten wir z.B. noch einen einfachen **Webserver**, hätten wir unter `http://localhost:8000` diesen Webserver erreichen. Davor müsste man aber noch `apache2` installieren, um dann in die index.html Datei (Startdatei Apache Web Server) zu erlangen. Diese Datei kann man dann beliebig abändern.
-**SSH** wäre eine weitere Port-Weiterleitung, welche uns eine sichere Möglichkeit bietet, über ein ungesichertes Netzwerk auf eine Maschine zuzugreifen z.B. über Putty. Dabei gibt man die IP des Localhosts `127.0.0.1` an und den neu zugegebenen Port `2200` an.
+**SSH** wäre eine weitere Port-Weiterleitung, welche uns eine sichere Möglichkeit bietet, über ein ungesichertes Netzwerk auf eine Maschine zuzugreifen z.B. über Putty. Dabei gibt man die IP des Localhosts `127.0.0.1` an und den weitergeleiteten Port `2200` an, welche dann auf den Port `22` umgeleitet wird.
 ```
     config.vm.network :forwarded_port, guest: 80, host: 8000
     config.vm.network :forwarded_port, guest: 22, host: 2200, id: "ssh"
