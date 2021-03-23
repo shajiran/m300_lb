@@ -1,4 +1,4 @@
-# File Server
+# Dokumentation LB2 - Fileserver
 | Autor         | Raveendran Shajiran                                          |
 |:--------------|:-------------------------------------------------------------|
 | Erstell Datum | 12. März 2021                                                |
@@ -71,7 +71,7 @@ Wir könnten noch ein **Port-Forwarding** machen, wäre aber nicht nötig für u
     config.vm.network :forwarded_port, guest: 22, host: 2200, id: "ssh"
 ```
 #### Provisionierung
-X
+Mit der Provisionierung kann man in Vagrant als Teil des Vagrant-Up-Prozesses automatisch Software installieren, Konfigurationen ändern, usw. Die Befehle die man sonst auf dem Bash in der Maschine eintippt, können nun unter dem Abschnitt `SCRIPT` eingefügt werden. Diese werden in der Variable `SCRIPT_INSTALL` gespeichert. In der unteren Zeile erkennt dann die Provisionierung, dass es sich um eine `Shell / Bash` Provision handelt. Wir sagen also der Shell, dass folgende Befehle von `SCRIPT_INSTALL` ausgeführt werden soll, bzw. automatisch eingetippt werden soll. Man könnte auch die Bash Befehle in einem getrennten Datei speichern, sodass man anstatt die Variable im Code, einen relativen Pfad mittels `path:` die Datei im Vagrantfile verweist. So hätte man z.B. die Provisionierung und die Netzwerk Konfiguration in seperaten Dateien, um eine besseren Übersicht zu erhalten. Dies benötigt man jedoch bei grösseren Vagrantfiles. Da unser Vagrantfile jedoch klein ist, ist es in unserem Fall in Ordnung, wenn alles im Vagrantfile befindet.
 ```
     SCRIPT_INSTALL = <<-SCRIPT
         ...
