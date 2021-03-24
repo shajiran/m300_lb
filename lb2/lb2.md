@@ -134,7 +134,23 @@ Der folgende Befehl legt ein smb-Passwort für den bestehenden User "test" an. D
 ```
         echo -ne "$PASS\n$PASS\n" | sudo smbpasswd -a -s $LOGIN
 ```
-X
+Nun möchten wir einen weiteren Aspekt der **Sicherheit** beachten: `chown` steht für change owner und erlaubt das Ändern des Eigentümer-Benutzers und/oder der Eigentümer-Gruppe von Dateien. Normalerweise ist der Benutzer, der eine Datei oder ein Verzeichnis erstellt, auch der Besitzer. Mit chown kann der Besitzer jedoch nachträglich geändert werden. `chmod` verändert die Zugriffsrechte von Dateien, bzw. kann man hier die Schreibe- und Lesebrechte vergeben. Die Ziffer-Ordnung `2770` haben eine Bedeutung:
+- **1. Ziffer**: Besitzer der Datei
+- **2. Ziffer**: Gruppe der Datei
+- **3. Ziffer**: andere Benutzer
+- **4. Ziffer**: Besitzer, Gruppe und Andere
+
+Die einzlnen Ziffer haben ebenfalls eine Bedeutung:
+- **0**: Keine Rechte
+- **1**: Nur Ausführrechte
+- **2**: Nur Schreibrechte
+- **3**: Nur Ausführ- und Schreibrechte
+- **4**: Nur Leserechte
+- **5**: Nur Schreib- und Ausführrechte
+- **6**: Nur Schreib- und Leserechte
+- **7**: Alle Rechte
+
+Unserem Share geben wir also nun die Berechtigung, dass der Besitzer sowie die Gruppe alle Rechte haben, die anderen jedoch keine Rechte haben. So kann man noch mit der **Sicherheit** "herum spielen".
 ```
         sudo chown $LOGIN:$LOGIN /home/$LOGIN
         sudo chmod 2770 /home/$LOGIN
