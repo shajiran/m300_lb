@@ -7,21 +7,23 @@
 | Lehrperson    | Berger Marco                                                 |
 
 ## Inhaltsverzeichnis
-- [Einleitung](#einleitung)
-- [Umsetzung](#umsetzung)
+- [Dokumentation LB2 - Fileserver](#dokumentation-lb2---fileserver)
+  - [Inhaltsverzeichnis](#inhaltsverzeichnis)
+  - [Einleitung](#einleitung)
+  - [Umsetzung](#umsetzung)
     - [Tools](#tools)
     - [Vagrantfile](#vagrantfile)
-    	- [Vagrant Konfiguration](#vagrant_konfiguration)
-    	- [VM Konfiguration](#vm_konfiguration)
-    	- [Netzwerk Konfiguration](#netzwerk_konfiguration)
-    	- [Provisionierung](#provisionierung)
-    	- [Samba Installation](#samba_installation)
-    	- [Samba Konfiguration](#samba_konfiguration)
-    	- [User und Share einrichten](#user_und_share_einrichten)
-    	- [Fileserver aktivieren](#fileserver_aktivieren)
-   - [Config Datei](#config_datei)
-- [Testen](#testen)
-- [Quellenangaben](#quellenangaben)
+      - [Vagrant Konfiguration](#vagrant-konfiguration)
+      - [VM Konfiguration](#vm-konfiguration)
+      - [Netzwerk Konfiguration](#netzwerk-konfiguration)
+      - [Provisionierung](#provisionierung)
+      - [Samba Installation](#samba-installation)
+      - [Samba Konfiguration](#samba-konfiguration)
+      - [User und Share einrichten](#user-und-share-einrichten)
+      - [Fileserver aktivieren](#fileserver-aktivieren)
+    - [Config Datei](#config-datei)
+  - [Testen](#testen)
+  - [Quellenverzeichnis](#quellenverzeichnis)
 
 
 <a name="einleitung"></a>
@@ -176,7 +178,8 @@ Die **smb.conf** Datei ist das Grundstück des ganzen. Hier bestimmen wir, welch
 
 <a name="testen"></a>
 ## Testen
-Nachdem das Vagrantfile fertig eingerichtet ist, können wir den Fileserver starten. Wie schon vorhin erklärt, können wir nun mittels dem Befehl im GIT Bash `vagrant up` eingeben, um die Maschine zu starten.
+Nachdem das Vagrantfile fertig eingerichtet ist, können wir den Fileserver starten. Wie schon vorhin erklärt, können wir nun mittels dem Befehl `vagrant up` im GIT Bash eingeben, um die Maschine zu starten. Nachdem die Maschine, bzw. unser Fileserver läuft, können wir auf unser Share Ordner zugreifen.
+
 
 
 <a name="quellenangaben"></a>
