@@ -130,7 +130,7 @@ Wir erstellen hier jetzt einen User und wie wir wissen, müssen wir danach das P
         echo -ne "$PASS\n$PASS\n" | sudo adduser $LOGIN
         sudo addgroup $LOGIN $LOGIN
 ```
-X
+Der folgende Befehl legt ein smb-Passwort für den bestehenden User "test" an. Dass dieser Schritt für einen bestehenden User durchgeführt wird ist insofern wichtig, da jeder smb-User einen gültigen Account am Server benötigt. Mit dem vergebenen Passwort kann später auf das smb-Share zugegriffen werden. Die Option `-a` gibt an, dass der folgende Benutzername der lokalen Datei smbpasswd hinzugefügt werden soll, wobei das neue Passwort eingegeben wird. Da das smb-Passwort nicht mit dem Passwort des eigentlichen Accounts übereinstimmen muss, kann es durchaus aufwendig sein, die unterschiedlichen Passwörter zu verwalten. Die Option `-s` soll Benutzern beim Schreiben von Skripten helfen, smbpasswd zu betreiben
 ```
         echo -ne "$PASS\n$PASS\n" | sudo smbpasswd -a -s $LOGIN
 ```
