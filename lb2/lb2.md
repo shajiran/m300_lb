@@ -156,7 +156,7 @@ Unserem Share geben wir also nun die Berechtigung, dass der Besitzer sowie die G
         sudo chmod 2770 /home/$LOGIN
 ```
 #### Config Datei
-X
+Die **smb.conf** Datei ist das Grundstück des ganzen. Hier bestimmen wir, welchen Ordner geshared werden soll, können weitere Berechtigungen festlegen, welche User oder Gruppe auf diesen Ordner Zugriff haben dürfen, etc. In dieser Config Datei können natürlich weitere Ordner zum sharen ergänzt werden.
 ```
 [fileserver]
 	path = /home/share
