@@ -104,7 +104,7 @@ Nun mittels Vagrant ist es schwierig die `config` Datei zu ändern. Was wir also
 X
 ```
 [fileserver]
-	path = /home/test
+	path = /home/share
 	browseable = yes
 	writeable = yes
 	read only = no
@@ -113,16 +113,18 @@ X
 	valid users = @test
 ```
 
-#### User einrichten
-Nachdem Samba nun erfolgreich installiert und konfiguriert wurde, erstellen wir einen User mit Passwort. Dieser dient zur **Sicherheit**, sodass kein anderer User auf dem Fileserver gelangt. Mittels Variablen erleichtert es uns die Aufgabe für zukünftig weitere Änderungen am Code selber. Wir setzen hier also ein `Username: test` und ein `Passwort: password` in jeweils eine Variable. 
+#### User und Share einrichten
+Nachdem Samba nun erfolgreich installiert und konfiguriert wurde, erstellen wir nun einen Ordner, welche die User später dann Dateien untereinander teilen können. Wir benennen den Ordner `share`.
+```
+        sudo mkdir /home/share
+```
+
+Jetzt haben wir einen Ordner, fehlt nun noch ein User. Wir erstellen einen User mit Passwort. Dieser dient zur **Sicherheit**, sodass kein anderer User auf dem Share gelangt. Mittels Variablen erleichtert es uns die Aufgabe für zukünftig weitere Änderungen am Code selber. Wir setzen hier also ein `Username: test` und ein `Passwort: password` in jeweils eine Variable. 
 ```
         LOGIN=test
         PASS=password
 ```
-X
-```
-        sudo mkdir /home/$LOGIN
-```
+
 X
 ```
         echo -ne "$PASS\n$PASS\n" | sudo adduser $LOGIN
@@ -137,6 +139,20 @@ X
         sudo chown $LOGIN:$LOGIN /home/$LOGIN
         sudo chmod 2770 /home/$LOGIN
 ```
+#### Config Datei
+X
+```
+[fileserver]
+	path = /home/share
+	browseable = yes
+	writeable = yes
+	read only = no
+	create mode = 0600
+	directory mode = 0700
+	valid users = @test
+```
+
+#### Fileserver starten
 X
 ```
         sudo /etc/init.d/samba restart
