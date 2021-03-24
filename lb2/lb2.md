@@ -100,18 +100,6 @@ Nun mittels Vagrant ist es schwierig die `config` Datei zu ändern. Was wir also
         sudo rm /etc/samba/smb.conf
         sudo wget -P /etc/samba/ https://raw.githubusercontent.com/shajiran/m300_lb/main/lb2/smb.conf 
 ```
-#### Config Datei
-X
-```
-[fileserver]
-	path = /home/share
-	browseable = yes
-	writeable = yes
-	read only = no
-	create mode = 0600
-	directory mode = 0700
-	valid users = @test
-```
 
 #### User und Share einrichten
 Nachdem Samba erfolgreich installiert und konfiguriert wurde, erstellen wir nun einen Ordner, welche die User später dann Dateien untereinander teilen können. Wir benennen den Ordner `share`.
@@ -130,7 +118,7 @@ Wir erstellen hier jetzt einen User und wie wir wissen, müssen wir danach das P
         echo -ne "$PASS\n$PASS\n" | sudo adduser $LOGIN
         sudo addgroup $LOGIN $LOGIN
 ```
-Der folgende Befehl legt ein smb-Passwort für den bestehenden User "test" an. Dass dieser Schritt für einen bestehenden User durchgeführt wird ist insofern wichtig, da jeder smb-User einen gültigen Account am Server benötigt. Mit dem vergebenen Passwort kann später auf das smb-Share zugegriffen werden. Die Option `-a` gibt an, dass der folgende Benutzername der lokalen Datei smbpasswd hinzugefügt werden soll, wobei das neue Passwort eingegeben wird. Da das smb-Passwort nicht mit dem Passwort des eigentlichen Accounts übereinstimmen muss, kann es durchaus aufwendig sein, die unterschiedlichen Passwörter zu verwalten. Die Option `-s` soll Benutzern beim Schreiben von Skripten helfen, smbpasswd zu betreiben
+Der folgende Befehl legt ein smb-Passwort für den bestehenden User "test" an. Dass dieser Schritt für einen bestehenden User durchgeführt wird ist insofern wichtig, da jeder smb-User einen gültigen Account am Server benötigt. Mit dem vergebenen Passwort kann später auf das smb-Share zugegriffen werden. Die Option `-a` gibt an, dass der folgende Benutzername der lokalen Datei smbpasswd hinzugefügt werden soll, wobei das neue Passwort eingegeben wird. Da das smb-Passwort nicht mit dem Passwort des eigentlichen Accounts übereinstimmen muss, kann es durchaus aufwendig sein, die unterschiedlichen Passwörter zu verwalten. Die Option `-s` soll Benutzern beim Schreiben von Skripten helfen, smbpasswd zu betreiben. Wir geben hier nun dasselbe Passwort wie vorhin.
 ```
         echo -ne "$PASS\n$PASS\n" | sudo smbpasswd -a -s $LOGIN
 ```
@@ -188,3 +176,6 @@ Sobald alle Konfigurationen vorgenommen sind, können wir unser Fileserver start
 - [Samba Config File Download](https://wiki.ubuntuusers.de/wget/)
 - [Samba Konfigurations File verschieben](https://stackoverflow.com/questions/54067192/vagrant-config-vm-provision-does-not-allow-me-to-copy-a-file-to-etc-nginx-conf/54099162)
 - [Samba Freigabe mit Authentifizierung](https://www.thomas-krenn.com/de/wiki/Samba_Freigabe_mit_Authentifizierung)
+- [Berechtigung Erklärung](https://linuxwiki.org/DateiRechte)
+- [Berechtigung Optionen](https://wiki.ubuntuusers.de/chmod/)
+- [Berechtigungen definieren / setzen](https://chmodcommand.com/chmod-2770/)
