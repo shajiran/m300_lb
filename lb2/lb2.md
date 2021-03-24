@@ -7,31 +7,41 @@
 | Lehrperson    | Berger Marco                                                 |
 
 ## Inhaltsverzeichnis
-- [1 - Einleitung](#einleitung)
-- [2 - Umsetzung](#umsetzung)
-    - [2.1 - Tools](#tools)
-    - [2.2 - Code](#code)
-- [3 - Testen](#testen)
-- [4 - Quellenangaben](#quellenangaben)
+- [Einleitung](#einleitung)
+- [Umsetzung](#umsetzung)
+    - [Tools](#tools)
+    - [Vagrantfile](#vagrantfile)
+    	- [Vagrant Konfiguration](#vagrant_konfiguration)
+    	- [VM Konfiguration](#vm_konfiguration)
+    	- [Netzwerk Konfiguration](#netzwerk_konfiguration)
+    	- [Provisionierung](#provisionierung)
+    	- [Samba Installation](#samba_installation)
+    	- [Samba Konfiguration](#samba_konfiguration)
+    	- [User und Share einrichten](#user_und_share_einrichten)
+    	- [Fileserver aktivieren](#fileserver_aktivieren)
+   - [Config Datei](#config_datei)
+- [Testen](#testen)
+- [Quellenangaben](#quellenangaben)
 
 
 <a name="einleitung"></a>
-## 1 - Einleitung
+## Einleitung
 In diesem Projekt befassen wir uns mit **Infrastructure as Code (IaC)** an. Auf Basis von **VirtualBox / Vagrant** wollen wir nun einen Fileserver mittels Samba automatisch aufsetzen.
 
 
 <a name="umsetzung"></a>
-## 2 - Umsetzung
+## Umsetzung
 <a name="tools"></a>
-### 2.1 - Tools
+### Tools
 Bevor wir dem Code zuwenden, benötigen wir folgende Tools:
 - VirtualBox
 - Vagrant
 - VisualStudioCode
 - GitBash
-<a name="code"></a>
-### 2.2 - Code
+<a name="vagrantfile"></a>
+### Vagrantfile
 Den [ganzen Code](https://github.com/shajiran/m300_lb/blob/main/lb2/Vagrantfile) findet man im Repository. Wir werden hier nun die einzelnen Schritte genauer anschauen.
+<a name="vagrant_konfiguration"></a>
 #### Vagrant Konfiguration
 Die "2" in der ersten Zeile steht für die Version des Konfigurationsobjekts **config**, das zur Konfiguration für diesen Block verwendet wird (der Abschnitt zwischen dem **do** und dem **end**). Dieses Objekt kann von Version zu Version sehr unterschiedlich sein. Derzeit gibt es nur zwei unterstützte Versionen: "1" und "2", wobei die "2" die neuere Version ist. Dies enthält neue und weitere Konfigurationsmöglichkeiten als die Vesion "1".
 ```
@@ -41,7 +51,7 @@ Vagrant.configure("2") do |config|
     ...
 end
 ```
-
+<a name="vm_konfiguration"></a>
 #### VM Konfiguration
 Die Einstellungen in **config.vm** ändern die Konfiguration der Maschine, die Vagrant verwaltet. Hier wird konfiguriert, welche Maschine hochfahren sollte. Für unser Projekt verwenden wir eine Ubuntu Maschnine (**ubuntu/trusty64**) und holen dazu die entsprechende [Image](https://app.vagrantup.com/boxes/search). Dieses Image ist bereits mit einem vorgegebenen Benutzer ausgestattet *(Username: **vagrant** / Password: **vagrant**)*.
 ```
@@ -58,7 +68,7 @@ Man kann nun auch noch die Virtuelle Maschnine anpassen. Man kann z.B. einen Nam
         vb.cpus = 2
         vb.gui = true
 ```
-
+<a name="netzwerk_konfiguration"></a>
 #### Netzwerk Konfiguration
 Für unser Fileserver benötigen wir Internetzugang, um die Verbindung auch von aussen zu ermöglichen. Hier konfigurieren wir das Netzwerk auf der Maschine. Wir unterscheiden zwischen zwei Netzwerke `private` und `public`. Die Idee dahinter ist, dass private Netzwerke niemals der Öffentlichkeit Zugang zu Ihrem Rechner gewähren sollten, public Netzwerke aber schon. Wir können zugleich auch eine statische IP-Adresse vergeben, mit der wir dann vom lokalen Rechner auf dem Fileserver zugreifen können.
 ```
@@ -70,6 +80,7 @@ Wir könnten noch ein **Port-Forwarding** machen, wäre aber nicht nötig für u
     config.vm.network :forwarded_port, guest: 80, host: 8000
     config.vm.network :forwarded_port, guest: 22, host: 2200, id: "ssh"
 ```
+<a name="provisionierung"></a>
 #### Provisionierung
 Mit der Provisionierung kann man in Vagrant als Teil des Vagrant-Up-Prozesses automatisch Software installieren, Konfigurationen ändern, usw. Die Befehle die man sonst auf dem Bash in der Maschine eintippt, können nun unter dem Abschnitt `SCRIPT` eingefügt werden. Diese werden in der Variable `SCRIPT_INSTALL` gespeichert. In der unteren Zeile erkennt dann die Provisionierung, dass es sich um eine `Shell / Bash` Provision handelt. Wir sagen also der Shell, dass folgende Befehle von `SCRIPT_INSTALL` ausgeführt werden soll, bzw. automatisch eingetippt werden soll. Man könnte auch die Bash Befehle in einem getrennten Datei speichern, sodass man anstatt die Variable im Code `inline:`, einen relativen Pfad mittels `path:` die Datei im Vagrantfile verweist. So hätte man z.B. die Provisionierung und die Netzwerk Konfiguration in seperaten Dateien, um eine besseren Übersicht zu erhalten. Dies benötigt man jedoch bei grösseren Vagrantfiles. Da unser Vagrantfile jedoch klein ist, ist es in unserem Fall in Ordnung, wenn alles im Vagrantfile befindet.
 ```
@@ -81,7 +92,7 @@ Mit der Provisionierung kann man in Vagrant als Teil des Vagrant-Up-Prozesses au
     
     config.vm.provision :shell, inline: SCRIPT_INSTALL
 ```
-
+<a name="samba_installation"></a>
 #### Samba Installation
 Bevor wir **Samba** installieren, nutzen wir die Befehle `sudo apt-get update` um die Paketlisten neu einzulesen und zu aktualisieren. Der Befehl `sudo apt-get upgrade` führt das eigentliche „Update“ aus. Somit sind wir auf dem aktuellsten Stand und können dann unser Samba installieren, welche uns für die Freigabe und das Teilen von Ordner und Dateien ermöglicht. 
 ```
@@ -89,7 +100,7 @@ Bevor wir **Samba** installieren, nutzen wir die Befehle `sudo apt-get update` u
         sudo apt-get -y upgrade
         sudo apt-get -y install samba
 ```
-
+<a name="samba_konfiguration"></a>
 #### Samba Konfiguration
 Sobald man Samba erfolgreich installiert hat, konfigurieren wir nun die `config` Datei. Zuerst erstellen wir eine **Backup Datei** vom originalen bzw. eine Kopie, falls wenn wir etwas falsches konfiguriert haben, wieder auf diese zurück zugreifen können. 
 ```     
@@ -100,7 +111,7 @@ Nun mittels Vagrant ist es schwierig die `config` Datei zu ändern. Was wir also
         sudo rm /etc/samba/smb.conf
         sudo wget -P /etc/samba/ https://raw.githubusercontent.com/shajiran/m300_lb/main/lb2/smb.conf 
 ```
-
+<a name="user_und_share_einrichten"></a>
 #### User und Share einrichten
 Nachdem Samba erfolgreich installiert und konfiguriert wurde, erstellen wir nun einen Ordner, welche die User später dann Dateien untereinander teilen können. Wir benennen den Ordner `share`.
 ```
@@ -143,7 +154,14 @@ Unserem Share geben wir also nun die Berechtigung, dass der Besitzer sowie die G
         sudo chown $LOGIN:$LOGIN /home/$LOGIN
         sudo chmod 2770 /home/$LOGIN
 ```
-#### Config Datei
+<a name="fileserver_aktivieren"></a>
+#### Fileserver aktivieren
+Sobald alle Konfigurationen vorgenommen sind, können wir unser Fileserver aktivieren.
+```
+        sudo /etc/init.d/samba restart
+```
+<a name="config_datei"></a>
+### Config Datei
 Die **smb.conf** Datei ist das Grundstück des ganzen. Hier bestimmen wir, welchen Ordner geshared werden soll, können weitere Berechtigungen festlegen, welche User oder Gruppe auf diesen Ordner Zugriff haben dürfen, etc. In dieser Config Datei können natürlich weitere Ordner zum sharen ergänzt werden.
 ```
 [fileserver]
@@ -156,19 +174,13 @@ Die **smb.conf** Datei ist das Grundstück des ganzen. Hier bestimmen wir, welch
 	valid users = @test
 ```
 
-#### Fileserver starten
-Sobald alle Konfigurationen vorgenommen sind, können wir unser Fileserver starten.
-```
-        sudo /etc/init.d/samba restart
-```
-
 <a name="testen"></a>
-## 3 - Testen
-
+## Testen
+Nachdem das Vagrantfile fertig eingerichtet ist, können wir den Fileserver starten. Wie schon vorhin erklärt, können wir nun mittels dem Befehl im GIT Bash `vagrant up` eingeben, um die Maschine zu starten.
 
 
 <a name="quellenangaben"></a>
-## 4 - Quellenverzeichnis
+## Quellenverzeichnis
 - [VagrantBox Katalog](https://app.vagrantup.com/boxes/search)
 - [Provisioning](https://semaphoreci.com/community/tutorials/getting-started-with-vagrant)
 - [Samba Installation und Konfiguration](https://www.thomas-krenn.com/de/wiki/Einfache_Samba_Freigabe_unter_Debian)
