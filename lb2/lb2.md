@@ -7,24 +7,25 @@
 | Lehrperson    | Berger Marco                                                 |
 
 ## Inhaltsverzeichnis
-- [Dokumentation LB2 - Fileserver](#dokumentation-lb2---fileserver)
-  - [Inhaltsverzeichnis](#inhaltsverzeichnis)
-  - [Einleitung](#einleitung)
-  - [Umsetzung](#umsetzung)
-    - [Tools](#tools)
-    - [Vagrantfile](#vagrantfile)
-      - [Vagrant Konfiguration](#vagrant-konfiguration)
-      - [VM Konfiguration](#vm-konfiguration)
-      - [Netzwerk Konfiguration](#netzwerk-konfiguration)
-      - [Provisionierung](#provisionierung)
-      - [Samba Installation](#samba-installation)
-      - [Samba Konfiguration](#samba-konfiguration)
-      - [User und Share einrichten](#user-und-share-einrichten)
-      - [Fileserver aktivieren](#fileserver-aktivieren)
-    - [Config Datei](#config-datei)
-  - [Testen](#testen)
-  - [Quellenverzeichnis](#quellenverzeichnis)
+- [Einleitung](#einleitung)
 
+- [Umsetzung](#umsetzung)
+	- [Tools](#tools)
+	- [Vagrantfile](#vagrantfile)
+   		- [Vagrant Konfiguration](#vagrant-konfiguration)
+		- [VM Konfiguration](#vm-konfiguration)
+		- [Netzwerk Konfiguration](#netzwerk-konfiguration)
+		- [Provisionierung](#provisionierung)
+		- [Samba Installation](#samba-installation)
+		- [Samba Konfiguration](#samba-konfiguration)
+		- [User und Share einrichten](#user-und-share-einrichten)
+		- [Fileserver aktivieren](#fileserver-aktivieren)
+	- [Config Datei](#config-datei)
+ 
+- [Testen](#testen)
+ 
+- [Quellenverzeichnis](#quellenverzeichnis)
+-----------------
 
 <a name="einleitung"></a>
 ## Einleitung
