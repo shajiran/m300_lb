@@ -120,10 +120,10 @@ Nachdem Samba erfolgreich installiert und konfiguriert wurde, erstellen wir nun 
         sudo mkdir /home/share
 ```
 
-Jetzt haben wir einen Ordner, fehlt nun noch ein User. Wir erstellen einen User mit Passwort. Dieser dient zur **Sicherheit**, sodass kein anderer User auf dem Share gelangt. Mittels Variablen erleichtert es uns die Aufgabe für zukünftig weitere Änderungen am Code selber. Wir setzen hier also ein `Username: test` und ein `Passwort: password` in jeweils eine Variable. 
+Jetzt haben wir einen Ordner, fehlt nun noch ein User. Wir erstellen einen User mit Passwort. Dieser dient zur **Sicherheit**, sodass kein anderer User auf dem Share gelangt. Mittels Variablen erleichtert es uns die Aufgabe für zukünftig weitere Änderungen am Code selber. Wir setzen hier also ein `Username: test` und ein `Passwort: mypassword` in jeweils eine Variable. 
 ```
         LOGIN=test
-        PASS=password
+        PASS=mypassword
 ```
 
 Wir erstellen hier jetzt einen User und wie wir wissen, müssen wir danach das Passwort zwei mal tippen. Mittels dem Befehl `echo` können wir dem Vagrant-Prozess unser Passwort mitteilen, sodass dies automatisch einrichtet. Im nachhinein fügen wir den erstellten User in eine exestierende Gruppe.
@@ -178,9 +178,15 @@ Die **smb.conf** Datei ist das Grundstück des ganzen. Hier bestimmen wir, welch
 
 <a name="testen"></a>
 ## Testen
-Nachdem das Vagrantfile fertig eingerichtet ist, können wir den Fileserver starten. Wie schon vorhin erklärt, können wir nun mittels dem Befehl `vagrant up` im GIT Bash eingeben, um die Maschine zu starten. Nachdem die Maschine, bzw. unser Fileserver läuft, können wir auf unser Share Ordner zugreifen.
+Nachdem das Vagrantfile fertig eingerichtet ist, können wir den Fileserver starten. Wie schon vorhin erklärt, können wir nun mittels dem Befehl `vagrant up` im GIT Bash eingeben, um die Maschine zu starten. Nachdem die Maschine, bzw. unser Fileserver läuft, können wir auf unser Share Ordner zugreifen. Dazu geben wir im **Explorer Pfad** die IP-Adresse unsers Fileservers an `\\192.168.1.200`. Es wird nach ein Username und ein Passwort gefordert *(Username: **test** / Password: **mypassword**)*. 
+
+![image](images/password.JPG)
 
 
+Wenn die Login-Daten stimmen gelangen wir in unser Share Ordner. Somit haben wir es geschafft einen Fileserver automatisch aufzusetzen und mittels Passwörter und Berechtigungen in ein Share Ordner vom lokalen Rechner zu gelangen. 
+
+
+![image](images/netzlaufwerk_einbinden.png)
 
 <a name="quellenangaben"></a>
 ## Quellenverzeichnis
