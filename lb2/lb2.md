@@ -114,7 +114,7 @@ X
 ```
 
 #### User und Share einrichten
-Nachdem Samba nun erfolgreich installiert und konfiguriert wurde, erstellen wir nun einen Ordner, welche die User später dann Dateien untereinander teilen können. Wir benennen den Ordner `share`.
+Nachdem Samba erfolgreich installiert und konfiguriert wurde, erstellen wir nun einen Ordner, welche die User später dann Dateien untereinander teilen können. Wir benennen den Ordner `share`.
 ```
         sudo mkdir /home/share
 ```
@@ -125,7 +125,7 @@ Jetzt haben wir einen Ordner, fehlt nun noch ein User. Wir erstellen einen User 
         PASS=password
 ```
 
-X
+Wir erstellen hier jetzt einen User und wie wir wissen, müssen wir danach das Passwort zwei mal tippen. Mittels dem Befehl `echo` können wir dem Vagrant-Prozess unser Passwort mitteilen, sodass dies automatisch einrichtet. Im nachhinein fügen wir den erstellten User in eine exestierende Gruppe.
 ```
         echo -ne "$PASS\n$PASS\n" | sudo adduser $LOGIN
         sudo addgroup $LOGIN $LOGIN
