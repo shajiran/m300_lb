@@ -114,7 +114,7 @@ X
 ```
 
 #### User einrichten
-X
+Nachdem Samba nun erfolgreich installiert und konfiguriert wurde, erstellen wir einen User mit Passwort. Dieser dient zur **Sicherheit**, sodass kein anderer User auf dem Fileserver gelangt. Mittels Variablen erleichtert es uns die Aufgabe für zukünftig weitere Änderungen am Code selber. Wir setzen hier also ein `Username: test` und ein `Passwort: password` in jeweils eine Variable. 
 ```
         LOGIN=test
         PASS=password
