@@ -140,7 +140,7 @@ Nun möchten wir einen weiteren Aspekt der **Sicherheit** beachten: `chown` steh
 - **3. Ziffer**: andere Benutzer
 - **4. Ziffer**: Besitzer, Gruppe und Andere
 
-Die einzlnen Ziffer haben ebenfalls eine Bedeutung:
+Die einzelnen Ziffer haben ebenfalls eine Bedeutung:
 - **0**: Keine Rechte
 - **1**: Nur Ausführrechte
 - **2**: Nur Schreibrechte
@@ -169,7 +169,7 @@ X
 ```
 
 #### Fileserver starten
-X
+Sobald alle Konfigurationen vorgenommen sind, können wir unser Fileserver starten.
 ```
         sudo /etc/init.d/samba restart
 ```
