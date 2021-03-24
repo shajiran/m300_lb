@@ -91,16 +91,27 @@ Bevor wir **Samba** installieren, nutzen wir die Befehle `sudo apt-get update` u
 ```
 
 #### Samba Konfiguration
-X
+Sobald man Samba erfolgreich installiert hat, konfigurieren wir nun die `config` Datei. Zuerst erstellen wir eine **Backup Datei** vom originalen bzw. eine Kopie, falls wenn wir etwas falsches konfiguriert haben, wieder auf diese zurück zugreifen können. 
 ```     
         sudo cp /etc/samba/smb.conf /etc/samba/smb.conf-backup
+```
+Nun mittels Vagrant ist es schwierig die `config` Datei zu ändern. Was wir also machen werden ist, wir löschen die `config` Datei in der Maschine und fügen eine vorkonfigurierte `config` Datei ein. Diese [vorkonfigurierte Datei](https://github.com/shajiran/m300_lb/blob/main/lb2/smb.conf) befindet sich in unserem Repository. Mit dem Befehl `wget` können wir nun die Datei via dem Internet herunterladen. Die Option `-P` erlaubt die Angabe eines Verzeichnisses, wo die heruntergeladene Datei gespeichert werden soll.
+```
         sudo rm /etc/samba/smb.conf
-```
-X
-```
         sudo wget -P /etc/samba/ https://raw.githubusercontent.com/shajiran/m300_lb/main/lb2/smb.conf 
 ```
-
+#### Config Datei
+X
+```
+[fileserver]
+	path = /home/test
+	browseable = yes
+	writeable = yes
+	read only = no
+	create mode = 0600
+	directory mode = 0700
+	valid users = @test
+```
 
 #### User einrichten
 X
@@ -142,5 +153,6 @@ X
 - [Provisioning](https://semaphoreci.com/community/tutorials/getting-started-with-vagrant)
 - [Samba Installation und Konfiguration](https://www.thomas-krenn.com/de/wiki/Einfache_Samba_Freigabe_unter_Debian)
 - [Samba Konfigurations File anpassen](https://wiki.ubuntuusers.de/Samba_Server/smb.conf/)
+- [Samba Config File Download](https://wiki.ubuntuusers.de/wget/)
 - [Samba Konfigurations File verschieben](https://stackoverflow.com/questions/54067192/vagrant-config-vm-provision-does-not-allow-me-to-copy-a-file-to-etc-nginx-conf/54099162)
 - [Samba Freigabe mit Authentifizierung](https://www.thomas-krenn.com/de/wiki/Samba_Freigabe_mit_Authentifizierung)
