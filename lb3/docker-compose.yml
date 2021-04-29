@@ -3,3 +3,5 @@ services:
   web:
     build: 
       context: ./php
+      dockerfile: dockerfile
+    container_name: php
