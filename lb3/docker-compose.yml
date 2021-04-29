@@ -5,3 +5,7 @@ services:
       context: ./php
       dockerfile: dockerfile
     container_name: php
+    volumes:
+      - ./php:/var/www/html/
+    ports:
+      - 8000:80
