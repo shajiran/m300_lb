@@ -5,7 +5,22 @@ services:
       context: ./php
       dockerfile: dockerfile
     container_name: php
+    depends_on:
+      - mysql
     volumes:
       - ./php:/var/www/html/
     ports:
       - 8000:80
+
+  mysql:
+    container_name: mysql
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment: 
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: Raveendran_db
+      MYSQL_USER: Raveendran
+      MYSQL_PASSWORD: Raveendran123
+    ports: 
+      - 6033:3306
