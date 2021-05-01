@@ -93,6 +93,12 @@ Im "build: " können wir nun den Service Aufbau definieren. Build kann entweder 
       dockerfile: dockerfile
 ```
 
+##### Container Name
+Mittels "container_name: " können wir dem Container einen eigenen Namen vergeben.
+```
+    container_name: php
+```
+
 <a name="quellenangaben"></a>
 ## Quellenverzeichnis
 - [Docker-Compose](https://docs.docker.com/compose/)
