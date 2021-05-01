@@ -39,3 +39,7 @@ Bevor wir dem Code zuwenden, benötigen wir folgende Tools:
 - Docker-Compose
 - VisualStudioCode
 - GitBash
+
+<a name="netzwerkkonfiguration"></a>
+### Netzwerkkonfiguration
+
