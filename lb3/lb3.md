@@ -106,6 +106,13 @@ Mittels "depends_on: " können wir die Abhängigkeit zwischen weitere Dienste / 
       - mysql
 ```
 
+##### Volumes
+Hier binden wir einen Volume ein, die als Unteroption für PHP angegeben ist. 
+```
+    volumes:
+      - ./php:/var/www/html/
+```
+
 
 <a name="quellenangaben"></a>
 ## Quellenverzeichnis
