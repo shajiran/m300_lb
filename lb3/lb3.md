@@ -18,6 +18,8 @@
         - [MySQL](#mysql)
     - [Docker-Compose](#dockercompose)
         - [Service Konfiguration](#servicekonfiguration)
+        - [Web Service Konfiguration](#webkonfiguration)
+        - [MySQL Service Konfiguration](#mysqlkonfiguration)
     - [Dockerfile](#dockerfile)
 - [Testen](#testen)
 - [Quellenverzeichnis](#quellenverzeichnis)
@@ -81,9 +83,18 @@ services:
     ...
 ```
 
-
+<a name="webkonfiguration"></a>
+#### Web Service Konfiguration
+##### Build
+Im "build: " können wir nun den Service Aufbau definieren. Build kann entweder als String angegeben werden, der einen Pfad direkt zum Build-Kontext enthält, oder als Objekt mit dem unter "context: " angegebenen Pfad und optional "dockerfile: " angegeben werden. 
+```
+    build: 
+      context: ./php
+      dockerfile: dockerfile
+```
 
 <a name="quellenangaben"></a>
 ## Quellenverzeichnis
+- [Docker-Compose](https://docs.docker.com/compose/)
 - [Docker-Compose Versionen](https://docs.docker.com/compose/compose-file/compose-versioning/)
-- 
+- [Docker-Compose Build](https://docs.docker.com/compose/compose-file/compose-file-v3/#context)
