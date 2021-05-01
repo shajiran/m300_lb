@@ -15,6 +15,7 @@
     - [Netzplan](#netzplan)
     - [Image](#image)
         - [PHP](#php)  
+        - [MySQL](#mysql)
     - [Docker-Compose](#dockercompose)
     - [Dockerfile](#dockerfile)
 - [Testen](#testen)
@@ -52,4 +53,9 @@ Wie man auf dem Plan sieht, haben wir zwei Server in unserer Umgebung. Das bedeu
 
 <a name="php"></a>
 #### PHP
-Für den Webserver verwenden wir den folgenden Image: [php:7.3.3](https://hub.docker.com/r/djenko/httpd-php-ext). **PHP** ist eine serverseitige Scriptsprache, die für Webentwicklungen entwickelt wurde, aber auch für allgemeine Zwecke kann PHP eingesetzt werden. Für unser Projekt perfekt geeignet. 
+Für den Webserver verwenden wir folgenden Image: [php:7.3.3](https://hub.docker.com/r/djenko/httpd-php-ext). **PHP** ist eine serverseitige Scriptsprache, die für Webentwicklungen entwickelt wurde, kann aber auch für allgemeine Zwecke eingesetzt werden. Für unser Projekt perfekt geeignet. 
+
+<a name="mysql"></a>
+#### MySQL
+Für den MySQL Server verwenden wir folgenden Image: [mysql:8.0](https://hub.docker.com/_/mysql). **MySQL** ist ein weit verbreitets Datenbankmanagementsystem und somit die beliebteste Open-Source-Datenbank der Welt. Mit seiner bewährten Leistungsfähigkeit, Zuverlässigkeit und Benutzerfreundlichkeit hat sich MySQL zur führenden Datenbank für webbasierte Anwendungen entwickelt, die das gesamte Spektrum von persönlichen Projekten und Webseiten abdecken.
+
