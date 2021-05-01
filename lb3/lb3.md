@@ -52,4 +52,4 @@ Wie man auf dem Plan sieht, haben wir zwei Server in unserer Umgebung. Das bedeu
 
 <a name="php"></a>
 #### PHP
-Für den Webserver verwenden wir den folgenden Image: [php:7.3.3](https://hub.docker.com/r/djenko/httpd-php-ext).
+Für den Webserver verwenden wir den folgenden Image: [php:7.3.3](https://hub.docker.com/r/djenko/httpd-php-ext). **PHP** ist eine serverseitige Scriptsprache, die für Webentwicklungen entwickelt wurde, aber auch für allgemeine Zwecke kann PHP eingesetzt werden. Für unser Projekt perfekt geeignet. 
