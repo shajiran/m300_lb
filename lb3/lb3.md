@@ -17,6 +17,7 @@
         - [PHP](#php)  
         - [MySQL](#mysql)
     - [Docker-Compose](#dockercompose)
+        - [Service Konfiguration](#servicekonfiguration)
     - [Dockerfile](#dockerfile)
 - [Testen](#testen)
 - [Quellenverzeichnis](#quellenverzeichnis)
@@ -59,3 +60,30 @@ Für den Webserver verwenden wir folgenden Image: [php:7.3.3](https://hub.docker
 #### MySQL
 Für den MySQL Server verwenden wir folgenden Image: [mysql:8.0](https://hub.docker.com/_/mysql). **MySQL** ist ein weit verbreitets Datenbankmanagementsystem und somit die beliebteste Open-Source-Datenbank der Welt. Mit seiner bewährten Leistungsfähigkeit, Zuverlässigkeit und Benutzerfreundlichkeit hat sich MySQL zur führenden Datenbank für webbasierte Anwendungen entwickelt, die das gesamte Spektrum von persönlichen Projekten und Webseiten abdecken.
 
+<a name="dockercompose"></a>
+### Docker-Compose
+Nun müssen wir die Images in unsere Umgebung einbauen. Dazu verwenden wir Docker-Compose. Docker-Compose ist ein Tool, das zum Definieren und Freigeben von Containeranwendungen entwickelt wurde. Wir erstellen ein YAML-Datei für das Docker-Compose, um die Dienste zu definieren, die wir mit einem einzigen Befehl starten bzw. beenden können. Den [ganzen Code](https://github.com/shajiran/m300_lb/blob/main/lb3/docker-compose.yml) findet man im Repository. Wir werden hier nun die einzelnen Schritte genauer anschauen.
+
+<a name="servicekonfiguration"></a>
+#### Service Konfiguration
+Wir bestimmen zuerst die Version des Docker-Compose Files "3.3". Anschliessend bestimmen wir mittels "services: " die Services, die wir benutzen wollen. Dabei können wir frei wählen, wie wir die Services benennen. In unserem Fall nennen wir diese "web: " und "mysql: ". 
+```
+version: '3.3'
+services:
+  web:
+    ...
+    ...
+    ...
+    
+  mysql:
+    ...
+    ...
+    ...
+```
+
+
+
+<a name="quellenangaben"></a>
+## Quellenverzeichnis
+- [Docker-Compose Versionen](https://docs.docker.com/compose/compose-file/compose-versioning/)
+- 
