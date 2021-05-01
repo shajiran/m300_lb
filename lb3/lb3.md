@@ -14,6 +14,7 @@
     - [Tools](#tools)
     - [Netzplan](#netzplan)
     - [Image](#image)
+        - [PHP](#php)  
     - [Docker-Compose](#dockercompose)
     - [Dockerfile](#dockerfile)
 - [Testen](#testen)
@@ -44,3 +45,11 @@ Bevor wir dem Code zuwenden, benötigen wir folgende Tools:
 ### Netzplan
 Um eine bessere Übersicht zum Projekt zu erhalten, erstellte ich hier ein Netzplan:
 ![image](images/Netzwerkplan.JPG)
+
+<a name="image"></a>
+### Image
+Wie man auf dem Plan sieht, haben wir zwei Server in unserer Umgebung. Das bedeutet, wir verwenden ebenfalls zwei Images, wobei eines davon wir selber erstellen werden. Die Images werden von der [Docker-Hub](https://hub.docker.com/search?q=&type=image) Seite entwendet.
+
+<a name="php"></a>
+#### PHP
+Für den Webserver verwenden wir den folgenden Image: [php:7.3.3](https://hub.docker.com/r/djenko/httpd-php-ext).
