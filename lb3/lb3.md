@@ -99,6 +99,14 @@ Mittels "container_name: " können wir dem Container einen eigenen Namen vergebe
     container_name: php
 ```
 
+##### Depends on
+Mittels "depends_on: " können wir die Abhängigkeit zwischen weitere Dienste / Services ausdrücken. Dies Bedeutet, dass es Dienste / Services in der Reihenfolge ihrer Abhängigkeit startet. Im folgenden Codezeile wird also "mysql" vor "web" gestartet.
+```
+    depends_on:
+      - mysql
+```
+
+
 <a name="quellenangaben"></a>
 ## Quellenverzeichnis
 - [Docker-Compose](https://docs.docker.com/compose/)
