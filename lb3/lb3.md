@@ -12,7 +12,7 @@
     - [Service](#service)
 - [Umsetzung](#umsetzung)
     - [Tools](#tools)
-    - [Netzwerkkonfiguration](#netzwerkkonfiguration)
+    - [Netzplan](#netzplan)
     - [Image](#image)
     - [Docker-Compose](#dockercompose)
     - [Dockerfile](#dockerfile)
@@ -40,6 +40,7 @@ Bevor wir dem Code zuwenden, benötigen wir folgende Tools:
 - VisualStudioCode
 - GitBash
 
-<a name="netzwerkkonfiguration"></a>
-### Netzwerkkonfiguration
-
+<a name="netzplan"></a>
+### Netzplan
+Um eine bessere Übersicht zum Projekt zu erhalten, erstellte ich hier ein Netzplan:
+![image](images/Netzwerkplan.JPG)
