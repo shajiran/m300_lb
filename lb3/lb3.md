@@ -107,12 +107,18 @@ Mittels "depends_on: " können wir die Abhängigkeit zwischen weitere Dienste / 
 ```
 
 ##### Volumes
-Hier binden wir einen Volume ein, die als Unteroption für PHP angegeben ist. 
+Hier binden wir einen "volume: " ein, die als Unteroption für PHP angegeben ist. 
 ```
     volumes:
       - ./php:/var/www/html/
 ```
 
+##### Ports
+Damit wir auch auf unsere Webseite gelangen können, leiten wir den Port 80 auf 8000 um. 
+```
+    ports:
+      - 8000:80
+```
 
 <a name="quellenangaben"></a>
 ## Quellenverzeichnis
