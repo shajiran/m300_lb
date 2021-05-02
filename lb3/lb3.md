@@ -129,6 +129,13 @@ Nun beim zweiten Service sieht der Aufbau ähnlich. Wir bestimmen wieder einen N
     image: mysql:8.0
 ```
 
+##### Command
+Wenn man MySQL lokal ausführt, kann man als Nächstes die Datei "my.cnf" ändern, indem man die unten gebildete Zeile hinzufügt und den MySQL-Dienst neu startet. Dadurch werden alle Datenbankbenutzer (einschliesslich root) mit der Authentifizierung "mysql_native_password" validiert. Mittels "restart: " funktion kann man den Container steuern, ob der automatisch startet, wenn man z.B. denn Docker neu startet. Wenn bei restart "always" angegeben ist, startet der Container immer neu.
+```
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+```
+
 <a name="quellenangaben"></a>
 ## Quellenverzeichnis
 - [Docker-Compose](https://docs.docker.com/compose/)
