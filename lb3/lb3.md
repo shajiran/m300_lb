@@ -86,7 +86,7 @@ services:
 <a name="webkonfiguration"></a>
 #### Web Service Konfiguration
 ##### Build
-Im "build: " können wir nun den Service Aufbau definieren. Build kann entweder als String angegeben werden, der einen Pfad direkt zum Build-Kontext enthält, oder als Objekt mit dem unter "context: " angegebenen Pfad und optional "dockerfile: " angegeben werden. 
+Im "build: " können wir nun den Service Aufbau definieren. Build kann entweder als String angegeben werden, der einen Pfad direkt zum Build-Kontext enthält, oder als Objekt mit dem unter "context: " angegebenen Pfad und optional "dockerfile: " angegeben werden. Hier kreieren wir also einen eigenen Image. 
 ```
     build: 
       context: ./php
@@ -118,6 +118,15 @@ Damit wir auch auf unsere Webseite gelangen können, leiten wir den Port 80 auf 
 ```
     ports:
       - 8000:80
+```
+
+<a name="mysqlkonfiguration"></a>
+#### MySQL Service Konfiguration
+##### Build
+Nun beim zweiten Service sieht der Aufbau ähnlich. Wir bestimmen wieder einen Namen für den Container, holen diesmal aber ein Image direkt aus Docker-Hub, anstatt ein eigenes zu erzeugen. 
+```
+    container_name: mysql
+    image: mysql:8.0
 ```
 
 <a name="quellenangaben"></a>
