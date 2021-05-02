@@ -146,6 +146,13 @@ Mittels "environment: " können wir einige Voreinstellungen nehmen. Wir setzen f
       MYSQL_PASSWORD: Raveendran123
 ```
 
+##### Ports
+Auch hier leiten wir den Port 3306 auf 6033 um. 
+```
+    ports: 
+      - 6033:3306
+```
+
 <a name="quellenangaben"></a>
 ## Quellenverzeichnis
 - [Docker-Compose](https://docs.docker.com/compose/)
