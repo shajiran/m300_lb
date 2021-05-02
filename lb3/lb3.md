@@ -153,6 +153,16 @@ Auch hier leiten wir den Port 3306 auf 6033 um.
       - 6033:3306
 ```
 
+<a name="dockerfile"></a>
+### Dockerfile
+Wie schon vorhin erwähnt erstellen wir für den Web Serveice einen eigenen Image, die zusätzlich noch eine MySQL Support anbietet. Dafür erstellen wir einen Dockerfile.
+```
+    FROM php:7.3.3-apache
+    RUN apt-get update && apt-get upgrade -y
+    RUN docker-php-ext-install mysqli
+    EXPOSE 80
+```
+
 <a name="quellenangaben"></a>
 ## Quellenverzeichnis
 - [Docker-Compose](https://docs.docker.com/compose/)
