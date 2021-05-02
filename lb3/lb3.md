@@ -136,6 +136,16 @@ Wenn man MySQL lokal ausführt, kann man als Nächstes die Datei "my.cnf" änder
     restart: always
 ```
 
+##### Enviroment
+Mittels "environment: " können wir einige Voreinstellungen nehmen. Wir setzen für den "Root" User im Service ein Passwort, benennen unser Datenbank und setzen einen User mit einem Passwort.
+```
+    environment: 
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: Raveendran_db
+      MYSQL_USER: Raveendran
+      MYSQL_PASSWORD: Raveendran123
+```
+
 <a name="quellenangaben"></a>
 ## Quellenverzeichnis
 - [Docker-Compose](https://docs.docker.com/compose/)
