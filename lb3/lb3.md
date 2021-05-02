@@ -21,6 +21,7 @@
         - [Web Service Konfiguration](#webkonfiguration)
         - [MySQL Service Konfiguration](#mysqlkonfiguration)
     - [Dockerfile](#dockerfile)
+    - [Index.php](#index)
 - [Testen](#testen)
 - [Quellenverzeichnis](#quellenverzeichnis)
 -----------------
@@ -161,6 +162,24 @@ Wie schon vorhin erwähnt erstellen wir für den Web Serveice einen eigenen Imag
     RUN apt-get update && apt-get upgrade -y
     RUN docker-php-ext-install mysqli
     EXPOSE 80
+```
+
+<a name="index"></a>
+### Index.php
+Nun erstellen wir ein "index.php" Datei, ist ähnlich wie die "index.html" Datei. Wir möchten herausfinden, ob unsere MySQL sich verbinden lässt. Auf der Webseite sollte angezeigt werden ob es fehlgeschlagen hat oder ob eine Verbindung hergestellt wurde.
+```
+<?php
+    $host = 'mysql';
+    $user = 'Raveendran';
+    $password = 'Raveendran123';
+    $db = 'Raveendran_db';
+
+    $connection = new mysqli($host,$user,$password,$db);
+    if($connection->connect_error){
+        echo 'Connection FAILED' . $connection->connect_error;
+    }
+    echo 'Raveendran Shajiran MYSQL: Connected';
+?>
 ```
 
 <a name="quellenangaben"></a>
