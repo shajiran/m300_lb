@@ -187,7 +187,7 @@ Nun erstellen wir ein "index.php" Datei, ist ähnlich wie die "index.html" Datei
 Wenn alles richtig eingestellt und konfiguriert ist, können wir das ganze auch testen. Die erstellten Dateien sollten auf einer Virtuellen Maschnine laufen. Danach kann man mit dem Befehl **docker-compose** die Services starten. 
 
 Wir entnehmen die IP Adresse der Virtuellen Maschine ("192.168.60.101") und öffnen nun unseren Web Service zur Überprüfung. Wir leiteten unser Web Service auf den Port 8000. Im Browser tippen wir nun **192.168.60.101:8000** und sollten auf unsere index.php Seite gelangen. Wie man sieht funktioniert unser Service einwandfrei:
-
+![image](images/Test.JPG)
 
 <a name="quellenangaben"></a>
 ## Quellenverzeichnis
